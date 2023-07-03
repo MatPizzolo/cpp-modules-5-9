@@ -3,6 +3,8 @@
 
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form {
 	private:
 		const std::string name;
@@ -19,6 +21,8 @@ class Form {
 		~Form();
 
 	    // Copy & Assignment (Orthodox Canonical Form)
+		Form(Form& copy);
+		Form &operator=(const Form& other);
 
     	// Member Functions
 		void beSigned(Bureaucrat& other);

@@ -22,7 +22,6 @@ AForm::~AForm() {
 	std::cout << "AForm " << this->name << " Destructor called" << std::endl;
 }
 
-
 // Member Functions
 int AForm::checkGrade(int grade) {
 	try {
@@ -42,20 +41,14 @@ int AForm::checkGrade(int grade) {
 
 void AForm::beSigned(Bureaucrat &other) {
 	if (this->isSigned) {
-		std::cout << "AForm is already signed" << std::endl;
+		std::cout << "Form is already signed" << std::endl;
 		return ;
 	}
-	try {
-		if (other.getGrade() > this->gradeToSign) {
-			other.signForm(this->name, false);
-			throw GradeTooLowException();
-		}
-		else {
-			this->isSigned = true;
-			other.signForm(this->name, true);
-		}
-	} catch(const GradeTooLowException &e) {
-		std::cout << "Exception: " << e.what() << std::endl;
+	if (other.getGrade() > this->gradeToSign)
+		throw Bureaucrat::GradeTooLowException();
+	else {
+		this->isSigned = true;
+		std::cout << other.getName() << " signed " << name << std::endl;
 	}
 }
 
@@ -72,6 +65,17 @@ int AForm::getGradeToExecute() const {
 	return (this->gradeToExecute);
 }
 
+// Copy & Assignment (Orthodox Canonical Form)
+AForm::AForm(AForm& copy): name(copy.name), isSigned(copy.isSigned), gradeToSign(copy.gradeToSign), gradeToExecute(copy.gradeToExecute) {
+	std::cout << "AForm Copy constructor called" << std::endl;
+}
+
+AForm &AForm::operator=(const AForm& other) {
+	std::cout << "Copy assignment operator called" << std::endl;
+	this->isSigned = other.getIsSigned();
+	return *this;
+}
+
 
 // Class throw exceptions
 const char *AForm::GradeTooLowException::what(void) const throw()
@@ -82,6 +86,11 @@ const char *AForm::GradeTooLowException::what(void) const throw()
 const char *AForm::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade too high for Form");
+};
+
+const char *AForm::FormNotSignedException::what(void) const throw()
+{
+	return ("Form isn't signed");
 };
 
 std::ostream	&operator<<(std::ostream &o, AForm *a)

@@ -2,6 +2,10 @@
 #define AFORM_H
 
 #include "Bureaucrat.hpp"
+#include <fstream>
+
+
+class Bureaucrat;
 
 class AForm {
 	private:
@@ -19,10 +23,13 @@ class AForm {
 		virtual ~AForm();
 
 	    // Copy & Assignment (Orthodox Canonical AForm)
-
+		AForm(AForm& copy);
+		AForm &operator=(const AForm& other);
+		
     	// Member Functions
 		void beSigned(Bureaucrat& other);
 		int checkGrade(int grade);
+		virtual void execute(Bureaucrat const& executor) const = 0;
     	// Getters Functions
 		std::string getName() const;
 		bool getIsSigned() const;
@@ -39,6 +46,12 @@ class AForm {
 			public:
 				const char *what() const throw();
 		};
+
+		class FormNotSignedException : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+
 
 };
 

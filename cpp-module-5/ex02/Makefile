@@ -1,6 +1,6 @@
 NAME = bureau
 
-SRCS = ./src/main.cpp ./src/Bureaucrat.cpp ./src/AForm.cpp
+SRCS = ./src/main.cpp ./src/Bureaucrat.cpp ./src/AForm.cpp ./src/ShrubberyCreationForm.cpp ./src/PresidentialPardonForm.cpp ./src/RobotomyRequestForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

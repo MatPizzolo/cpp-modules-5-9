@@ -90,11 +90,12 @@ void Bureaucrat::incrementGrade() {
 	}
 }
 
-void Bureaucrat::signForm(std::string name, bool sign) {
-	if (sign)
-		std::cout << this->name << " signed " << name << std::endl;
-	else
-		std::cout << this->name << " couldn't sign " << name << " because of grade too low " << std::endl;
+void Bureaucrat::signForm(AForm &form) {
+	form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm const &form)const {
+	form.execute(*this);
 }
 
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()

@@ -47,12 +47,12 @@ void Form::beSigned(Bureaucrat &other) {
 	}
 	try {
 		if (other.getGrade() > this->gradeToSign) {
-			other.signForm(this->name, false);
+			std::cout << other.getName() << " couldn't sign " << std::endl;
 			throw GradeTooLowException();
 		}
 		else {
 			this->isSigned = true;
-			other.signForm(this->name, true);
+			std::cout << other.getName() << " signed " << name << std::endl;
 		}
 	} catch(const GradeTooLowException &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
@@ -72,6 +72,16 @@ int Form::getGradeToExecute() const {
 	return (this->gradeToExecute);
 }
 
+// Copy & Assignment (Orthodox Canonical Form)
+Form::Form(Form& copy): name(copy.name), isSigned(copy.isSigned), gradeToSign(copy.gradeToSign), gradeToExecute(copy.gradeToExecute) {
+	std::cout << "Form Copy constructor called" << std::endl;
+}
+
+Form &Form::operator=(const Form& other) {
+	std::cout << "Copy assignment operator called" << std::endl;
+	this->isSigned = other.getIsSigned();
+	return *this;
+}
 
 // Class throw exceptions
 const char *Form::GradeTooLowException::what(void) const throw()
