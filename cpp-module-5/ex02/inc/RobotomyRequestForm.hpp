@@ -4,6 +4,9 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
+#include <cstdlib>
+#include <ctime>
+
 class RobotomyRequestForm: public AForm {
 	private:
 		std::string target;

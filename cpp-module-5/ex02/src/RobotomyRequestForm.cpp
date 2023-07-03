@@ -16,15 +16,18 @@ std::string RobotomyRequestForm::getTarget() const {
 	return (this->target);
 }
 
+static int robot_fail = 0;
+
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const {
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw Bureaucrat::GradeTooLowException();
 	if (!this->getIsSigned())
 		throw AForm::FormNotSignedException();
 
-	std::cout << "Some drilling noises" << std::endl;
-	// 50/50 for the robotomize
-	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox " << std::endl;
+	if (robot_fail++ % 2)
+		std::cout << "BRRRRRRRRRRRRRR\n" << this->getTarget() << " was robotomized" << std::endl;
+	else
+		std::cout << "Robotomy failed" << std::endl;
 }
 
 // Copy & Assignment (Orthodox Canonical Form)
