@@ -10,12 +10,12 @@
 class ScalarConverter {
 	private:
 		static bool isLiteralChar(char c);
-
-	public:
 		ScalarConverter();
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter& other);
 		ScalarConverter& operator=(const ScalarConverter& other);
+
+	public:
 		static void convert(const std::string& literal);
 
 };

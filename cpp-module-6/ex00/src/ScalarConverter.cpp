@@ -72,8 +72,10 @@ void ScalarConverter::convert(const std::string& literal) {
 		floatValue = std::atof(literal.c_str());
 		doubleValue = static_cast<double>(floatValue);
 	} else {
-		doubleValue = std::stod(literal.c_str());
-		floatValue = static_cast<float>(doubleValue);
+		try {
+			doubleValue = std::stod(literal.c_str());
+		} catch (std::exception &e) {}
+			floatValue = static_cast<float>(doubleValue);
 	}
 	
 	if (std::find(std::begin(specialTypes), std::end(specialTypes), literal) != std::end(specialTypes)) {
