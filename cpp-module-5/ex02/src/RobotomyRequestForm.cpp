@@ -2,12 +2,10 @@
 
 RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy", 72, 45), target("default") {
 	std::cout << "Constructor RobotomyRequestForm called" << std::endl;
-	std::cout << "Make some drilling noises " << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotomy", 72, 45), target(target) {
 	std::cout << "Constructor RobotomyRequestForm called" << std::endl;
-	std::cout << "Make some drilling noises " << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
