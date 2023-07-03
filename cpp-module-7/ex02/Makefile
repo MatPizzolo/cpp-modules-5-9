@@ -1,8 +1,8 @@
 NAME = temp
 
-SRCS = ./src/main.cpp ./src/Array.tpp
+SRCS = ./src/main.cpp
 
-OBJS = $(SRCS:.cpp=.o) $(SRCS:.tpp=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 CXX = g++ -std=c++98
 CXXFLAGS = -Wall -Wextra -Werror
@@ -14,8 +14,6 @@ $(NAME): $(OBJS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-%.o: %.tpp
-	$(CXX) $(CXXFLAGS) -x c++ -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

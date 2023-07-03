@@ -7,12 +7,14 @@ template<typename T>
 Array<T>::Array() {
 	int* arr = new int[0];
 	this->arr = arr;
+	this->arrSize = 0;
 }
 
 template<typename T>
 Array<T>::Array(unsigned int size) {
 	int* arr = new int[size];
 	this->arr = arr;
+	this->arrSize = size;
 }
 
 template<typename T>
@@ -27,6 +29,7 @@ Array<T>::Array(const Array& copy) {
 	for (unsigned int i = 0; i < copy.arrSize; i++)
 		arr[i] = copy.arr[i];
 	this->arr = arr;
+	this->arrSize = 0;
 }
 
 template<typename T>
