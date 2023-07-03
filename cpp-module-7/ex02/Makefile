@@ -1,8 +1,8 @@
-NAME = bureau
+NAME = temp
 
-SRCS = ./src/main.cpp ./src/Bureaucrat.cpp ./src/AForm.cpp
+SRCS = ./src/main.cpp ./src/Array.tpp
 
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o) $(SRCS:.tpp=.o)
 
 CXX = g++ -std=c++98
 CXXFLAGS = -Wall -Wextra -Werror
@@ -14,6 +14,8 @@ $(NAME): $(OBJS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+%.o: %.tpp
+	$(CXX) $(CXXFLAGS) -x c++ -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

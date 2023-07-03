@@ -1,6 +1,6 @@
-NAME = bureau
+NAME = convert
 
-SRCS = ./src/main.cpp ./src/Bureaucrat.cpp ./src/AForm.cpp
+SRCS = ./src/main.cpp ./src/Serializer.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

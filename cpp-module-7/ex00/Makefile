@@ -1,6 +1,6 @@
-NAME = bureau
+NAME = temp
 
-SRCS = ./src/main.cpp ./src/Bureaucrat.cpp ./src/AForm.cpp
+SRCS = ./src/main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

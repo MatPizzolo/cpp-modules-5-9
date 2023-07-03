@@ -1,27 +1,27 @@
 #include <iostream>
 
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 int main()
 {
 	Bureaucrat mateo("mateo", 150);
-	Bureaucrat harvey("mateo", 1);
+	Bureaucrat harvey("harvey", 1);
 	std::cout << &mateo;
 	std::cout << &harvey;
 	std::cout << std::endl;
 
-	Form mat("mat");
+	AForm mat("mat");
 	std::cout << &mat;
 	std::cout << std::endl;
 
-	Form lol("lol", 2, 120);
+	AForm lol("lol", 2, 120);
 	std::cout << &lol;
 	lol.beSigned(mateo);
 	lol.beSigned(harvey);
 	std::cout << &lol;
 	std::cout << std::endl;
 
-	Form trol("trol", true, 5, 5);
+	AForm trol("trol", true, 5, 5);
 	std::cout << &trol;
 	trol.beSigned(harvey);
 	std::cout << &trol;

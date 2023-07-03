@@ -1,9 +1,9 @@
-#ifndef FORM_H
-#define FORM_H
+#ifndef AFORM_H
+#define AFORM_H
 
 #include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
 	private:
 		const std::string name;
 		bool isSigned;
@@ -12,13 +12,13 @@ class Form {
 
 	public:
 		// Constructors & Destructor
-		Form();
-		Form(std::string name);
-		Form(std::string name, int gradeToSign, int gradeToExecute);
-		Form(std::string name, bool isSigned, int gradeToSign, int gradeToExecute);
-		~Form();
+		AForm();
+		AForm(std::string name);
+		AForm(std::string name, int gradeToSign, int gradeToExecute);
+		AForm(std::string name, bool isSigned, int gradeToSign, int gradeToExecute);
+		virtual ~AForm();
 
-	    // Copy & Assignment (Orthodox Canonical Form)
+	    // Copy & Assignment (Orthodox Canonical AForm)
 
     	// Member Functions
 		void beSigned(Bureaucrat& other);
@@ -42,6 +42,6 @@ class Form {
 
 };
 
-std::ostream	&operator<<(std::ostream &o, Form *a);
+std::ostream	&operator<<(std::ostream &o, AForm *a);
 
 #endif

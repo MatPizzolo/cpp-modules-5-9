@@ -5,7 +5,7 @@
 int main()
 {
 	Bureaucrat mateo("mateo", 150);
-	Bureaucrat harvey("mateo", 1);
+	Bureaucrat harvey("harvey", 1);
 	std::cout << &mateo;
 	std::cout << &harvey;
 	std::cout << std::endl;
