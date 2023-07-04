@@ -1,9 +1,5 @@
 #include "../inc/easyfind.hpp"
 
-#include <iostream>
-#include <vector>
-#include <list>
-
 int main() {
 	int result;
 	int arr[] = {1, 2, 3, 4, 5};
