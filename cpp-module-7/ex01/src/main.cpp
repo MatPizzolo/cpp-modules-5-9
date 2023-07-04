@@ -20,8 +20,8 @@ int main( void ) {
 	
 	::iter(str, length, printElement<char>);
 	std::cout << std::endl;
-	iter(str, length, toUpper);
-	iter(str, length, printElement<char>);
+	::iter(str, length, toUpper);
+	::iter(str, length, printElement<char>);
 	std::cout << std::endl;
 	std::cout << std::endl;
 
