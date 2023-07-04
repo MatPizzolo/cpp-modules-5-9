@@ -82,7 +82,9 @@ void ScalarConverter::convert(const std::string& literal) {
 		charValue = "impossible";
 	}
 
-	if (charValue.empty() && std::isprint(intValue) && literal.find('.') == std::string::npos) {
+	// Do not display char if has decimals
+	// if (charValue.empty() && std::isprint(intValue) && literal.find('.') == std::string::npos) {
+	if (charValue.empty() && std::isprint(intValue)) {
 		charValue = "'" + std::string(1, static_cast<char>(intValue)) + "'";
 	} else if (charValue.empty()) {
 		charValue = "Non displayable";
