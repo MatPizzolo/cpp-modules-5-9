@@ -82,7 +82,7 @@ void ScalarConverter::convert(const std::string& literal) {
 		charValue = "impossible";
 	}
 
-	if (charValue.empty() && std::isprint(intValue)) {
+	if (charValue.empty() && std::isprint(intValue) && literal.find('.') == std::string::npos) {
 		charValue = "'" + std::string(1, static_cast<char>(intValue)) + "'";
 	} else if (charValue.empty()) {
 		charValue = "Non displayable";
@@ -108,10 +108,5 @@ void ScalarConverter::convert(const std::string& literal) {
 			std::cout << "double: " << doubleValue << std::endl;
 		}
 	}
-}
-
-
-bool ScalarConverter::isLiteralChar(char c) {
-	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
 }
 

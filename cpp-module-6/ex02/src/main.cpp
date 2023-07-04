@@ -6,7 +6,7 @@ Base::~Base() {}
 Base* generate(void) {
     int randomNum = std::rand() % 3;
 
-    Base* instance = nullptr;
+    Base* instance = NULL;
     if (randomNum == 0) {
         instance = new A();
 		std::cout << "A generated" << std::endl;
@@ -21,11 +21,11 @@ Base* generate(void) {
 }
 
 void identify(Base* p) {
-	if(dynamic_cast<A*>(p) != nullptr)
+	if(dynamic_cast<A*>(p) != NULL)
 		std::cout << "P is of base A" << std::endl;
-	if(dynamic_cast<B*>(p) != nullptr)
+	if(dynamic_cast<B*>(p) != NULL)
 		std::cout << "P is of base B" << std::endl;
-	if(dynamic_cast<C*>(p) != nullptr)
+	if(dynamic_cast<C*>(p) != NULL)
 		std::cout << "P is of base C" << std::endl;
 }
 

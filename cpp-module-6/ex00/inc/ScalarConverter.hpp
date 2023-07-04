@@ -9,7 +9,6 @@
 
 class ScalarConverter {
 	private:
-		static bool isLiteralChar(char c);
 		ScalarConverter();
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter& other);
