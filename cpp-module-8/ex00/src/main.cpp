@@ -21,4 +21,13 @@ int main() {
         std::cout << "Element found: " << result << std::endl;
     else
         std::cout << "Element not found." << std::endl;
+
+	std::cout << std::endl;
+
+	std::cout << "Searching non-existent nbr through list" << std::endl;
+    result = easyfind(numbersL, 10);
+    if (result != -1)
+        std::cout << "Element found: " << result << std::endl;
+    else
+        std::cout << "Element not found." << std::endl;
 }

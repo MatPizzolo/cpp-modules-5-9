@@ -2,65 +2,29 @@
 #define MUTANTSTACK_HPP
 
 #include <iostream>
+#include <algorithm>
 #include <stack>
-#include <iterator>
+#include <vector>
 
-template<typename T>
-class MutantStack: public std::stack<T> {
+template <class T>
+class MutantStack : public std::stack<T, std::deque<T> >
+{
 	public:
-		MutantStack(): std::stack<T>() {}
-		void* begin();
-		// ~MutantStack();
-		// MutantStack(const MutantStack& copy);
-		// MutantStack &operator=(const MutantStack& other);
+		typedef std::stack<T, std::deque<T> > stack;
+		typedef typename stack::container_type::iterator iterator;
 
-		// Iterators
-		// end
-		// rbegin
-		// rend
-		// cbegin
-		// cend
-		// crbegin
-		// crend
-		class iterator {
-			private:
-				void*	it;
-			
-			public:
-				iterator(): {
-					this->it = NULL;
-				};
-		};
+		MutantStack() : stack() {}
+		MutantStack(const stack &src) : stack(src) {}
+		~MutantStack() {}
+		stack &operator=(const stack &src) {
+			if (*this != src)
+				*this = src;
+			return (*this);
+		}
+
+		iterator begin() { return stack::c.begin(); }
+	    iterator end() { return stack::c.end(); }
 };
 
+
 #endif
-
-
-
-
-/*
-
-			iterator& operator++() {
-				++it;
-				return *this;
-			}
-
-			iterator operator++(int) {
-				iterator temp = *this;
-				++(*this);
-				return temp;
-			}
-
-			bool operator==(const iterator& other) const {
-				return it == other.it;
-			}
-
-			bool operator!=(const iterator& other) const {
-				return !(*this == other);
-			}
-
-			reference operator*(){
-				return *it;
-			}
-
-*/

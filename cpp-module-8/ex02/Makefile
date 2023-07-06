@@ -1,6 +1,6 @@
 NAME = temp
 
-SRCS =  ./src/main.cpp ./src/MutantStack.cpp
+SRCS =  ./src/main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

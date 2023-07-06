@@ -4,10 +4,10 @@
 #include "../inc/easyfind.hpp"
 
 template<typename T>
-int easyfind(T& vect, int b) {
+int easyfind(T& cont, int b) {
 	typename T::const_iterator it;
-	it = find (vect.begin(), vect.end(), b);
-	if (it != vect.end())
+	it = find(cont.begin(), cont.end(), b);
+	if (it != cont.end())
 		return *it;
 	return -1;
 }
