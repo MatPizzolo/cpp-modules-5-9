@@ -5,14 +5,14 @@
 
 template<typename T>
 Array<T>::Array() {
-	int* arr = new int[0];
+	T* arr = new T[0];
 	this->arr = arr;
 	this->arrSize = 0;
 }
 
 template<typename T>
 Array<T>::Array(unsigned int size) {
-	int* arr = new int[size];
+	T* arr = new T[size];
 	this->arr = arr;
 	this->arrSize = size;
 }

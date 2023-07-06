@@ -22,16 +22,15 @@ class MutantStack: public std::stack<T> {
 		// cend
 		// crbegin
 		// crend
-	template<typename Container>
-	class iterator: public std::iterator<std::bidirectional_iterator_tag, T>
-	{
-		private:
-			typename Container::iterator it;
-
-		public:
-			iterator(typename Container::iterator iter) : it(iter) {}
-
-	};
+		class iterator {
+			private:
+				void*	it;
+			
+			public:
+				iterator(): {
+					this->it = NULL;
+				};
+		};
 };
 
 #endif
