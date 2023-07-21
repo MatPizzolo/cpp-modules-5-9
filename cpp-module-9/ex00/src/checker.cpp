@@ -1,18 +1,20 @@
 #include "../inc/BitcoinExchange.hpp"
 
-std::vector<std::string> split(const std::string& input, char delimiter) {
-    std::vector<std::string> result;
-    std::istringstream iss(input);
-    std::string token;
-
-    while (std::getline(iss, token, delimiter)) {
-        result.push_back(token);
-    }
-
-    return result;
+std::string ft_splitDate(std::string line, std::string *vale, char delimiter) {
+	std::string date = "";
+	std::string val = "";
+	int i = -1;
+	while (line[++i] != delimiter)
+		date += line[i];
+	while (line[++i])
+		val += line[i];
+	*vale = val;
+	return date;
 }
 
-bool specificDateChecker(std::string date, int value) {
+bool specificDateChecker(std::string date, double value) {
+	// Check year-month-day
+	// std::cout << date << " - " << value << std::endl;
 	if (date.length() == 0 || date == "") {
 		std::cout << "Error: Invalid date format." << std::endl;
 		return false;
@@ -28,11 +30,15 @@ bool dateChecker(std::string file) {
 	std::ifstream fd(file.c_str(), std::fstream::in);
 	std::string line;
 	std::string date;
-	int value;
+	std::string val;
+	double value;
+	// check first line
+	// check it is correctly as date | value
 	while (std::getline(fd, line)) {
-		std::vector<std::string> parts = split(line, ',');
-		date = parts[0];
-		value = std::atoi(parts[1].c_str());
+		date = ft_splitDate(line, &val, ',');
+		try {
+			value = std::stof(val.c_str());
+		} catch (std::exception &e) {}
 		if (!specificDateChecker(date, value)) {
 			fd.close();
 			return false;
@@ -52,7 +58,22 @@ bool argChecker(int argc, char *argv[]) {
 		std::cout << "Error: Could not open the file." << std::endl;
 		return false;
 	}
-	// check first line
 	fd.close();
 	return true;
 }
+
+bool dataCsvChecker() {
+	std::ifstream fd("data.csv", std::ifstream::in);
+	if (!fd.is_open()) {
+		std::cout << "Error: Could not open the csv file." << std::endl;
+		return false;
+	}
+	fd.close();
+	if (!dateChecker("data.csv"))
+		return false;
+	return true;
+}
+
+// bool argInputChecker(std::string file) {
+
+// }

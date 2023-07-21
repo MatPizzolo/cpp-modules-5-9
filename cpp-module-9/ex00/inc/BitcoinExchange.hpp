@@ -6,19 +6,24 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <map>
 
 class BitcoinExchange {
 	private:
-		// map??
+		std::map<std::string, double> _btcMap;
 
 	public:
+		// Constructor & Destructor
 		BitcoinExchange();
 		~BitcoinExchange();
-		// find value?
+
+		// Chanonical
+
+		// Member Functions
+		void startMap();
+		void showPrices(std::string file);
 };
 
-bool dateChecker(std::string file);
-bool argChecker(int argc, char *argv[]);
-
+std::string ft_splitDate(std::string line, std::string *vale, char delimiter);
 
 #endif
