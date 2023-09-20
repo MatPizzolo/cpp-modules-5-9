@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 		return 2;
 	}
 	RPN rpnCalculator;
-	rpnCalculator.startStack(input);
+	rpnCalculator.startStack(argv[1]);
 	double result = rpnCalculator.getResult();
-	std::cout << "Result: " << result << std::endl;
+	std::cout << result << std::endl;
 }

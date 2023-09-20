@@ -25,5 +25,6 @@ class BitcoinExchange {
 };
 
 std::string ft_splitDate(std::string line, std::string *vale, char delimiter);
+bool specificDateChecker(std::string line);
 
 #endif
