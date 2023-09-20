@@ -1,22 +1,27 @@
 #include "../inc/PmergeMe.hpp"
 #include <ctime>
 
-void printVector(const std::vector<int>& vec) {
-	for (std::size_t i = 0; i < vec.size(); ++i) {
+void printVector(const std::vector<int> &vec)
+{
+	for (std::size_t i = 0; i < vec.size(); ++i)
+	{
 		std::cout << vec[i];
-		if (i != vec.size() - 1) {
+		if (i != vec.size() - 1)
+		{
 			std::cout << " ";
 		}
 	}
 	std::cout << std::endl;
 }
 
-bool checkArg(std::string input) {
+bool checkArg(std::string input)
+{
 	if (input.length() == 0)
 		return false;
 	std::istringstream iss(input);
 	std::string token;
-	while (iss >> token) {
+	while (iss >> token)
+	{
 		if (std::numeric_limits<int>::min() > std::atoi(token.c_str()))
 			return false;
 		else if (std::numeric_limits<int>::max() < std::atoi(token.c_str()))
@@ -24,27 +29,27 @@ bool checkArg(std::string input) {
 		if (std::atoi(token.c_str()) < 0)
 			return false;
 	}
-
-	// CHECK DUPLICATES !?
-
 	return true;
 }
 
-int main(int argc, char *argv[]) {
-	if (argc != 2) {
+int main(int argc, char *argv[])
+{
+	if (argc != 2)
+	{
 		std::cerr << "Invalid number of arguments.\nUsage: " << argv[0] << " \"expression\"" << std::endl;
 		return 1;
 	}
-	if (!checkArg(argv[1])) {
+	if (!checkArg(argv[1]))
+	{
 		std::cerr << "Error" << std::endl;
 		return 2;
 	}
 	std::cout << "Before: " << argv[1] << std::endl;
-    clock_t start = clock();
+	clock_t start = clock();
 	PmergeMe mergeSort;
 	double xElements = mergeSort.numsToContainers(argv[1]);
 	clock_t end = clock();
-    double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+	double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 	double sortTimeVec = mergeSort.sortVec();
 	double sortTimeList = mergeSort.sortList();
 	sortTimeVec += elapsedTime;

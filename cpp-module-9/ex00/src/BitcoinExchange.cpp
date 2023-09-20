@@ -14,7 +14,6 @@ BitcoinExchange::~BitcoinExchange() {}
 
 void BitcoinExchange::startMap()
 {
-	std::cout << "startMap" << std::endl;
 	std::ifstream fd("data.csv", std::fstream::in);
 	std::string line;
 	std::string date;
