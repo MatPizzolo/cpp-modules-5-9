@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <vector>
 #include <sstream>
 #include <map>
 
@@ -18,6 +17,8 @@ class BitcoinExchange {
 		~BitcoinExchange();
 
 		// Chanonical
+		BitcoinExchange(BitcoinExchange& copy);
+		BitcoinExchange &operator=(const BitcoinExchange& other);
 
 		// Member Functions
 		void startMap();

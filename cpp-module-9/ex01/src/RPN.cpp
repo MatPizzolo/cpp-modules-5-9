@@ -55,3 +55,12 @@ double RPN::getResult() {
 	}
 	return result;
 }
+
+RPN::RPN(RPN& copy) {
+	this->_myStack = copy._myStack;
+}
+
+RPN &RPN::operator=(const RPN& other) {
+	this->_myStack = other._myStack;
+	return *this;
+}

@@ -16,6 +16,9 @@ class PmergeMe {
 		PmergeMe();
 		~PmergeMe();
 
+		PmergeMe(PmergeMe& copy);
+		PmergeMe &operator=(const PmergeMe& other);
+
 		double numsToContainers(std::string nums);
 		double sortVec();
 		double sortList();

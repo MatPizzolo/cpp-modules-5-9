@@ -21,7 +21,7 @@ bool checkArg(std::string input) {
 		} else if (std::isspace(ch)) {
 			// Ignore spaces
 		} else {
-			return false; // Invalid character in the input
+			return false;
 		}
 	}
 

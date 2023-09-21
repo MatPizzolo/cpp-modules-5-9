@@ -42,7 +42,6 @@ void BitcoinExchange::showPrices(std::string file)
 	double value;
 	double res;
 	std::map<std::string, double>::iterator it;
-	// printMapValues(_btcMap);
 	std::getline(fd, line);
 	while (std::getline(fd, line))
 	{
@@ -54,7 +53,9 @@ void BitcoinExchange::showPrices(std::string file)
 			{
 				value = std::stof(val.c_str());
 			}
-			catch (std::exception &e){}
+			catch (std::exception &e)
+			{
+			}
 			it = _btcMap.find(date);
 			if (it != _btcMap.end())
 			{
@@ -63,10 +64,31 @@ void BitcoinExchange::showPrices(std::string file)
 			}
 			else
 			{
-				it = _btcMap.lower_bound(date);
-				res = value * it->second;
-				std::cout << date << " => " << value << " = " << res << std::endl;
+				if (date > "2022-03-29")
+				{
+					it = _btcMap.find("2022-03-29");
+					res = value * it->second;
+					std::cout << date << " => " << value << " = " << res << std::endl;
+				}
+				else
+				{
+					it = _btcMap.lower_bound(date);
+					--it;
+					res = value * it->second;
+					std::cout << date << " => " << value << " = " << res << std::endl;
+				}
 			}
 		}
 	}
+}
+
+BitcoinExchange::BitcoinExchange(BitcoinExchange &copy)
+{
+	this->_btcMap = copy._btcMap;
+}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
+{
+	this->_btcMap = other._btcMap;
+	return *this;
 }

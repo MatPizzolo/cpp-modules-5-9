@@ -13,6 +13,9 @@ class RPN {
 		RPN();
 		~RPN();
 
+		RPN(RPN& copy);
+		RPN &operator=(const RPN& other);
+
 		void startStack(std::string nums);
 		double getResult();
 };

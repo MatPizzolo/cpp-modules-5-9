@@ -129,3 +129,14 @@ double PmergeMe::sortList()
 	double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 	return (elapsedTime);
 }
+
+PmergeMe::PmergeMe(PmergeMe& copy) {
+	this->_myList = copy._myList;
+	this->_myVec = copy._myVec;
+}
+
+PmergeMe &PmergeMe::operator=(const PmergeMe& other) {
+	this->_myList = other._myList;
+	this->_myVec = other._myVec;
+	return *this;
+}
