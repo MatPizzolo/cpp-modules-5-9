@@ -14,6 +14,14 @@ void printVector(const std::vector<int> &vec)
 	std::cout << std::endl;
 }
 
+void printList(const std::list<int> &lst)
+{
+	std::list<int>::const_iterator it;
+	for (it = lst.begin(); it != lst.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
 bool checkArg(std::string input)
 {
 	if (input.length() == 0)
@@ -30,14 +38,6 @@ bool checkArg(std::string input)
 			return false;
 	}
 	return true;
-}
-
-void printList(const std::list<int> &lst)
-{
-	std::list<int>::const_iterator it;
-	for (it = lst.begin(); it != lst.end(); ++it)
-		std::cout << *it << " ";
-	std::cout << std::endl;
 }
 
 int main(int argc, char *argv[])

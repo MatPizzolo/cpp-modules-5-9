@@ -17,7 +17,6 @@ double PmergeMe::numsToContainers(std::string nums)
 	return res;
 }
 
-// Function to perform binary search and find the insertion position
 int binarySearchVec(const std::vector<int> &S, int element)
 {
 	int left = 0;
@@ -26,17 +25,11 @@ int binarySearchVec(const std::vector<int> &S, int element)
 	{
 		int mid = (left + right) / 2;
 		if (S[mid] == element)
-		{
 			return mid; // Element already exists in S
-		}
 		else if (S[mid] < element)
-		{
 			left = mid + 1;
-		}
 		else
-		{
 			right = mid - 1;
-		}
 	}
 	return left; // Insert element at the left position
 }
@@ -59,9 +52,7 @@ std::vector<int> mergeInsertionSortVec(const std::vector<int> &vec)
 			pair.push_back(vec[i + 1]);
 		}
 		else
-		{
 			pair.push_back(vec[i]);
-		}
 		pairs.push_back(pair);
 	}
 
@@ -102,11 +93,8 @@ std::list<int> mergeInsertionSortList(const std::list<int> &lst)
     std::list<int> result;
 
     if (lst.size() <= 1)
-    {
-        return lst; // Base case: already sorted or empty list
-    }
+        return lst;
 
-    // Create pairs
     std::list<std::list<int> > pairs;
     std::list<int> currentPair;
     for (std::list<int>::const_iterator it = lst.begin(); it != lst.end(); ++it)
@@ -119,28 +107,19 @@ std::list<int> mergeInsertionSortList(const std::list<int> &lst)
         }
     }
     if (!currentPair.empty())
-    {
         pairs.push_back(currentPair);
-    }
 
-    // Comparison and Sorting
     std::list<int> largerElements;
     for (std::list<std::list<int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
     {
         if (it->size() == 2)
-        {
             largerElements.push_back(std::max(it->front(), it->back()));
-        }
         else
-        {
             largerElements.push_back(it->front());
-        }
     }
 
-    // Recursion
     std::list<int> sortedLargerElements = mergeInsertionSortList(largerElements);
 
-    // Insertion
     for (std::list<int>::const_iterator it = lst.begin(); it != lst.end(); ++it)
     {
         std::list<int>::iterator insertionPosition = binarySearchList(result, *it);
