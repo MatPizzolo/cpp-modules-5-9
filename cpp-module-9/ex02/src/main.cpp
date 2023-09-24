@@ -32,6 +32,14 @@ bool checkArg(std::string input)
 	return true;
 }
 
+void printList(const std::list<int> &lst)
+{
+	std::list<int>::const_iterator it;
+	for (it = lst.begin(); it != lst.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
@@ -56,6 +64,8 @@ int main(int argc, char *argv[])
 	sortTimeList += elapsedTime;
 	std::cout << "After:  ";
 	printVector(mergeSort._myVec);
+	std::cout << "After:  ";
+	printList(mergeSort._myList);
 	std::cout << "Time to process a range of " << xElements << " elements with std::vector : " << sortTimeVec << "us" << std::endl;
 	std::cout << "Time to process a range of " << xElements << " elements with std::list : " << sortTimeList << "us" << std::endl;
 }
